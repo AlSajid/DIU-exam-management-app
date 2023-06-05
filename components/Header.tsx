@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <Link to="/">
-        <div className="bg-emerald-700 w-full text-white text-center text-3xl p-3 shadow py-5 sticky top-0">
-          <h1 className="font-serif inline ">DIU Exam Management System</h1>
+        <Link href="/">
+        <div className="bg-slate-700 w-full text-white text-3xl p-3 shadow py-5 sticky top-0">
+          <h1 className="font-serif">DIU Exam Management System</h1>
 {/*   
           {
             user &&

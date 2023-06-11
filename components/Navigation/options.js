@@ -1,16 +1,14 @@
-//icons
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
-import { GrSchedule } from "react-icons/gr";
 import { RiTeamLine } from "react-icons/ri";
-// import { AllContexts } from "../../contexts/hooks/ContextProvider";
 import { GoMortarBoard } from "react-icons/go";
+import { ImCalendar, ImBooks } from "react-icons/im";
 
 export const options = [
-  { name: "Committee", icon: <RiTeamLine className="mx-auto" /> },
-  { name: "Teachers", icon: <FaChalkboardTeacher className="mx-auto" /> },
-  { name: "Students", icon: <GoMortarBoard className="mx-auto" /> },
-  { name: "Classrooms", icon: <SiGoogleclassroom className="mx-auto" /> },
-  { name: "Courses", icon: <GrSchedule className="mx-auto" /> },
-  { name: "Routine", icon: <GrSchedule className="mx-auto" /> },
+	{ name: "Committee", icon: <RiTeamLine /> },
+	{ name: "Courses", icon: <ImBooks /> },
+	{ name: "Teachers", icon: <FaChalkboardTeacher /> },
+	{ name: "Sections", icon: <GoMortarBoard /> },
+	{ name: "Classrooms", icon: <SiGoogleclassroom /> },
+	{ name: "Routine", icon: <ImCalendar /> }
 ];

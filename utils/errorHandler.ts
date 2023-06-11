@@ -1,12 +1,17 @@
+import {NextResponse} from "next/server";
+
 export default function errorHandler(error: {code: number | string}) {
 	console.log(error.code);
 	console.log(error);
+
+	let message = "Something went wrong";
+
 	switch (error.code) {
 		case 11000:
-			return "Duplicate Entry";
+			message = "Duplicate Entry";
 		case 404:
-			return "Not Found";
-		default:
-			return "Something went wrong";
+			message = "Not Found";
 	}
+
+	return NextResponse.json({message}, {status: 500});
 }

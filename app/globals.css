@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+nav li {
+	@apply m-3
+  text-xl font-medium
+  rounded
+  text-white bg-emerald-700
+  transition-all duration-300 ease-in-out
+  hover:bg-emerald-900 hover:text-emerald-100 hover:font-semibold hover:translate-x-1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+button {
+	@apply bg-emerald-700 text-white font-semibold py-3 px-7 text-lg rounded-r;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+label {
+	@apply p-3 font-bold;
+}
+
+input,
+select {
+	@apply w-full p-3
+  font-semibold
+  rounded
+  text-emerald-950 bg-slate-100
+  border-2 border-transparent
+  focus:outline-none
+  focus:border-dashed focus:border-emerald-700 focus:border-2;
+}
+
+option {
+	@apply font-semibold
+  text-emerald-950;
+}
+
+table {
+	@apply w-full
+  text-lg font-semibold
+  text-emerald-950;
+}
+
+tr {
+	@apply p-3 border
+}
+td {
+	@apply py-1 px-3;
+}
+
+thead tr {
+	@apply bg-emerald-700 text-white text-center;
 }

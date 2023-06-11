@@ -2,7 +2,7 @@
 import Loader from "@/components/Loader";
 import Table from "@/components/Table";
 import {AllContexts} from "@/contexts/ContextProvider";
-import deletionModal from "@/utils/DeletionModal";
+import deletionModal from "@/components/DeletionModal";
 import delReqHandler from "@/utils/delReqHandler";
 import {useContext} from "react";
 

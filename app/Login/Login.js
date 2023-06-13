@@ -22,14 +22,14 @@ const Login = () => {
                     <h1 className='text-red-700 text-5xl font-serif font-black'>Entry Restricted</h1>
                     <p className='text-3xl my-3'>Authorized Personnel Only</p>
                 </div>
-                <div className='w-1/2' onClick={signInWithGoogle}>
+                {/* <div className='w-1/2' onClick={signInWithGoogle}>
                     {checking ? <Loader msg='Verifying Your Identity' />
                         :
 
                         <img src={key} alt="key" className='w-1/3 ml-5 hover:shadow-sm hover:cursor-pointer' />
 
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     );

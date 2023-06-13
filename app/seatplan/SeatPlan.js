@@ -28,7 +28,7 @@ const SeatPlan = ({ plan }) => {
               <td className="border-2 p-3">Total</td>
             </tr>
           </thead>
-          <tbody className="h-10 bg-green-50 overflow-hidden">
+          {/* <tbody className="h-10 bg-green-50 overflow-hidden">
             {plan?.map((exam, i = 0) => (
               <tr>
                 <td className="border p-3">{exam.day}</td>
@@ -42,7 +42,7 @@ const SeatPlan = ({ plan }) => {
                 <td className="border p-3">{exam.seat}</td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     </div>

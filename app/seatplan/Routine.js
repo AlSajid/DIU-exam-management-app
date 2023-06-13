@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header/Header";
-import useRoutine from "./../hooks/useRoutine";
+import useRoutine from "../../hooks/useRoutine";
 import SeatPlan from "./SeatPlan";
 
 const Routine = () => {

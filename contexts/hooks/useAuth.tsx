@@ -15,7 +15,7 @@ const useAuth = () => {
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                console.log(result.user.email.substr(result.user.email.length - 10))
+                // console.log(result.user.email.substr(result.user.email.length - 10))
                 // setUser(result.user);
             }).catch((error) => {
 
@@ -32,7 +32,7 @@ const useAuth = () => {
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            setUser(user);
+            // setUser(user);
         }
         setChecking(false);
     });

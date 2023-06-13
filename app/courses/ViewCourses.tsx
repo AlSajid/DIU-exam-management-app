@@ -3,13 +3,13 @@ import Loader from "@/components/Loader";
 import Table from "@/components/Table";
 import {AllContexts} from "@/contexts/ContextProvider";
 import deletionModal from "@/components/DeletionModal";
-import DeletionModal from "@/components/DeletionModal";
 import delReqHandler from "@/utils/delReqHandler";
 import {useContext} from "react";
-import {toast} from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
-export default function ViewAllCourses() {
-	const {courses, getCourses} = useContext(AllContexts);
+export default function ViewCourses() {
+	const {courses, getCourses}: any = useContext(AllContexts);
+	const router = useRouter();
 
 	const handleDelete = (id: string) => {
 		async function del() {
@@ -20,6 +20,10 @@ export default function ViewAllCourses() {
 			}
 		}
 		deletionModal(del);
+	};
+
+	const handleEdit = (id: string) => {
+		router.push(`/courses/${id}`);
 	};
 
 	return (
@@ -34,6 +38,10 @@ export default function ViewAllCourses() {
 					heads={["Code", "Title", "Semester", "Shift"]}
 					fields={["code", "title", "semester", "shift"]}
 					actions={[
+						{
+							name: "Edit",
+							onClick: handleEdit
+						},
 						{
 							name: "Delete",
 							onClick: handleDelete

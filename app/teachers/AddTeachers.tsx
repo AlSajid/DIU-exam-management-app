@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import Form from "@/components/Form/Form";
 import Loader from "@/components/Loader";
 import {AllContexts} from "@/contexts/ContextProvider";
-import getHandler from "@/utils/getReqHandler.";
+import getReqHandler from "@/utils/getReqHandler.";
 import postReqHandler from "@/utils/postReqHandler";
 import {useState, useRef, useContext} from "react";
 import {toast} from "react-hot-toast";
@@ -12,7 +12,7 @@ const AddTeachers = () => {
 	const [loading, setLoading] = useState(false);
 	const [fetching, setFetching] = useState(false);
 
-	const {getTeachers} = useContext(AllContexts);
+	const {getTeachers}: any = useContext(AllContexts);
 
 	const url: any = useRef();
 	const idRef: any = useRef();
@@ -34,7 +34,7 @@ const AddTeachers = () => {
 		}
 
 		setFetching(true);
-		const response: any = await getHandler(`/api/teachers/fetch?url=${url.current.value}`);
+		const response: any = await getReqHandler(`/api/teachers/fetch?url=${url.current.value}`);
 		setFetching(false);
 
 		if (response === 404) {
@@ -53,12 +53,6 @@ const AddTeachers = () => {
 	};
 
 	const handleAddTeacher = async () => {
-		if (idRef.current.value === "") {
-			toast.error("Employee ID is required");
-			idRef.current.focus();
-			return;
-		}
-
 		if (nameRef.current.value === "") {
 			toast.error("Name is required");
 			nameRef.current.focus();
@@ -90,7 +84,7 @@ const AddTeachers = () => {
 		}
 
 		const data = {
-			employeeID: parseInt(idRef.current.value),
+			employeeID: idRef.current.value,
 			name: nameRef.current.value,
 			designation: designationRef.current.value,
 			department: departmentRef.current.value,

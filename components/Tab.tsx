@@ -37,7 +37,7 @@ export default function Tab({header, content}: any) {
             </div>
 
             {/* tab contents */}
-            <div className="p-3">{content[tabIndex]}</div>
+            <div>{content[tabIndex]}</div>
         </div>
     );
 }

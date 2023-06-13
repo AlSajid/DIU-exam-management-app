@@ -1,9 +1,8 @@
 import {toast} from "react-hot-toast";
 
-export default async function getHandler(url: string) {
+export default async function getReqHandler(url: string) {
 	const response = await fetch(url);
 	const res = await response.json();
-    console.log(res)
 
 	switch (response.status) {
 		case 200:

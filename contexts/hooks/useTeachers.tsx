@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 const useTeachers = () => {
-	const [teachers, setTeachers] = useState([]);
+	const [teachers, setTeachers] = useState();
 
 	const getTeachers = () => {
 		fetch(`/api/teachers`)

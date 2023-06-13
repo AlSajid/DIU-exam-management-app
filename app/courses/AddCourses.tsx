@@ -10,7 +10,7 @@ import {AllContexts} from "@/contexts/ContextProvider";
 
 export default function AddCourses() {
 	const [loading, setLoading] = useState(false);
-	const {getCourses} = useContext(AllContexts);
+	const {getCourses}: any = useContext(AllContexts);
 
 	const codeRef: any = useRef();
 	const titleRef: any = useRef();

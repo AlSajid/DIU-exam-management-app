@@ -5,9 +5,11 @@ import {AllContexts} from "@/contexts/ContextProvider";
 import deletionModal from "@/components/DeletionModal";
 import delReqHandler from "@/utils/delReqHandler";
 import {useContext} from "react";
+import {useRouter} from "next/navigation";
 
 const ViewTeachers = () => {
-	const {teachers, getTeachers} = useContext(AllContexts);
+	const {teachers, getTeachers}: any = useContext(AllContexts);
+	const router = useRouter();
 
 	const handleDelete = (id: string) => {
 		async function del() {
@@ -20,6 +22,10 @@ const ViewTeachers = () => {
 		deletionModal(del);
 	};
 
+	const handleEdit = (id: string) => {
+		router.push(`/teachers/${id}`);
+	};
+
 	return (
 		<>
 			{teachers === undefined ? (
@@ -29,14 +35,12 @@ const ViewTeachers = () => {
 					name="Teachers"
 					type="teachers"
 					data={teachers}
-					heads={["Employee ID", "Name", "Designation", "Phone", "Email"]}
+					heads={["ID", "Name", "Designation", "Phone", "Email"]}
 					fields={["employeeID", "name", "designation", "phone", "email"]}
 					actions={[
 						{
 							name: "Edit",
-							onClick: (id: string) => {
-								console.log(id);
-							}
+							onClick: handleEdit
 						},
 						{
 							name: "Delete",

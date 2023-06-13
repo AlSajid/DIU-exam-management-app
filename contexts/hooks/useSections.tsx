@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from "react";
 
-const useSections = () => {
-    const [sections, setSections] = useState();
+export default function useSections() {
+	const [sections, setSections] = useState();
 
-    const getSections = () => {
-        fetch(`/api/sections`)
-            .then((response) => response.json())
-            .then((data) => setSections(data));
-    }
+	const getSections = () => {
+		fetch(`/api/sections`)
+			.then((response) => response.json())
+			.then((data) => setSections(data));
+	};
 
-    useEffect(() => {
-        getSections();
-    }, []);
+	useEffect(() => {
+		getSections();
+	}, []);
 
-
-    return { sections: sections, getSections }
-};
-
-export default useSections;
+	return {sections: sections, getSections};
+}

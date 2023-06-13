@@ -33,7 +33,6 @@ const ViewTeachers = () => {
 			) : (
 				<Table
 					name="Teachers"
-					type="teachers"
 					data={teachers}
 					heads={["ID", "Name", "Designation", "Phone", "Email"]}
 					fields={["employeeID", "name", "designation", "phone", "email"]}

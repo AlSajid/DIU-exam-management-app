@@ -1,41 +1,41 @@
 "use client";
+import deletionModal from "@/components/DeletionModal";
 import Loader from "@/components/Loader";
 import Table from "@/components/Table";
 import {AllContexts} from "@/contexts/ContextProvider";
-import deletionModal from "@/components/DeletionModal";
 import delReqHandler from "@/utils/delReqHandler";
-import {useContext} from "react";
 import {useRouter} from "next/navigation";
+import {useContext} from "react";
 
-export default function ViewCourses() {
-	const {courses, getCourses}: any = useContext(AllContexts);
+export default function ViewClassrooms() {
+	const {classrooms, getClassrooms}: any = useContext(AllContexts);
 	const router = useRouter();
 
 	const handleDelete = (id: string) => {
 		async function del() {
-			const url = `/api/courses?id=${id}`;
+			const url = `/api/classrooms?id=${id}`;
 			const response = await delReqHandler(url);
 			if (response === 200) {
-				getCourses();
+				getClassrooms();
 			}
 		}
 		deletionModal(del);
 	};
 
 	const handleEdit = (id: string) => {
-		router.push(`/courses/${id}`);
+		router.push(`/classrooms/${id}`);
 	};
 
 	return (
 		<>
-			{courses === undefined ? (
+			{classrooms === undefined ? (
 				<Loader msg="Fetching data" />
 			) : (
 				<Table
-					name="Courses"
-					data={courses}
-					heads={["Code", "Title", "Semester", "Shift"]}
-					fields={["code", "title", "semester", "shift"]}
+					name="Sections"
+					data={classrooms}
+					heads={["Room No", "Row No", "Number of Seats"]}
+					fields={["room", "row", "seats"]}
 					actions={[
 						{
 							name: "Edit",

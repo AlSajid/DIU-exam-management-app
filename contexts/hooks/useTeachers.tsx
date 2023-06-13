@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const useTeachers = () => {
+export default function useTeachers() {
 	const [teachers, setTeachers] = useState();
 
 	const getTeachers = () => {
@@ -14,6 +14,4 @@ const useTeachers = () => {
 	}, []);
 
 	return {teachers, getTeachers};
-};
-
-export default useTeachers;
+}

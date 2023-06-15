@@ -7,19 +7,13 @@ export default function Input({input}: any) {
 					<select ref={input.ref}>
 						<option value="">...</option>
 						{input.options.map((item: any, index: number) => (
-							<option
-								key={index}
-								value={item.value}>
+							<option key={index} value={item.value}>
 								{item.name}
 							</option>
 						))}
 					</select>
 				) : (
-					<input
-						type={input.type}
-						ref={input.ref}
-						onChange={input.onChange}
-					/>
+					<input type={input.type} ref={input.ref} onChange={input.onChange} />
 				)}
 			</td>
 		</tr>

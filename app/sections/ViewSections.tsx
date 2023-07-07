@@ -23,7 +23,7 @@ const ViewSections = () => {
 	};
 
 	const handleEdit = (id: string) => {
-		router.push(`/courses/${id}`);
+		router.push(`/sections/${id}`);
 	};
 
 	return (
@@ -38,6 +38,10 @@ const ViewSections = () => {
 					heads={["Course code", "Course Title", "Course Teacher", "Section", "Students"]}
 					fields={["courseCode", "courseTitle", "teacherName", "section", "students"]}
 					actions={[
+						{
+							name: "Edit",
+							onClick: handleEdit
+						},
 						{
 							name: "Delete",
 							onClick: handleDelete

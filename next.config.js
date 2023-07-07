@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
-    experimental: {
-        serverComponentsExternalPackages: ['mongoose', 'tailwindcss'],
-    },
-}
+	experimental: {
+		serverComponentsExternalPackages: ["mongoose"]
+	}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

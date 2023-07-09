@@ -36,7 +36,8 @@ export default async function getSections() {
 					courseSemester: "$course.semester",
 					courseShift: "$course.shift",
 					teacherId: "$teacher._id",
-					teacherName: "$teacher.name",
+					CourseId: "$course._id",
+					teacherName: "$teacher.name"
 				}
 			},
 			{

@@ -92,7 +92,7 @@ export default function Page({params}: any) {
 						}
 					]}
 				/>
-				<div>{loading ? <Loader msg="Sending" /> : <Button action={handleUpdate}>Update</Button>}</div>
+				<div>{loading ? <Loader msg="Updating" /> : <Button action={handleUpdate}>Update</Button>}</div>
 			</div>
 		</Board>
 	);

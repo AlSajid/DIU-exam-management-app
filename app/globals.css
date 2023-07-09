@@ -12,7 +12,10 @@ nav li {
 }
 
 button {
-	@apply bg-emerald-700 text-white font-semibold py-3 px-7 text-lg rounded-r;
+	@apply bg-emerald-700 text-white 
+  py-3 px-7
+  disabled:opacity-50 disabled:cursor-not-allowed
+  font-semibold  text-lg rounded-r;
 }
 
 label {
@@ -21,7 +24,7 @@ label {
 
 input,
 select {
-	@apply w-full p-3
+	@apply w-full p-3 m-1
   font-semibold
   rounded
   text-emerald-950 bg-slate-100
@@ -42,7 +45,7 @@ table {
 }
 
 tr {
-	@apply p-3 border
+	@apply p-3 border;
 }
 td {
 	@apply py-1 px-3;

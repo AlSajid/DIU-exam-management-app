@@ -1,21 +1,31 @@
+"use client";
+import Board from "@/components/Board";
+import Clock from "react-live-clock";
+import {useState} from "react";
+
 export default function Home() {
-  return (
-    <main className="bg-slate-50 h-screen">
-      <div className="bg-white container mx-auto py-7 shadow">
-        <div>
-          <h1 className="text-4xl text-center font-semibold  my-7 font-mono">
-            {/* <span className="text-emerald-500">{user.displayName}</span> */}
-            <span>, Welcome to your Dashboard</span>
-          </h1>
-        </div>
+   const [date, setDate] = useState(new Date());
 
-
-
-        <div className="container mx-auto h-1/2 place-items-center
-                    grid gap-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-
-        </div>
-      </div>
-    </main>
-  );
+   return (
+      <main className="bg-slate-50 h-screen">
+         <Board heading="Welcome!">
+            <div className="flex gap-10 m-10 flex-col items-center justify-center">
+               <Clock
+                  noSsr={true}
+                  className="text-7xl text-teal-950 font-bol font-mono"
+                  format={"hh:mm:ss"}
+                  timezone={"Asia/Dhaka"}
+                  ticking={true}
+               />
+               <span className="text-3xl text-teal-950 font-thin font-mono">
+                  {new Intl.DateTimeFormat("en-US", {
+                     day: "numeric",
+                     month: "long",
+                     year: "numeric"
+                  }).format(date)}
+               </span>
+            </div>
+         </Board>
+      </main>
+   );
 }

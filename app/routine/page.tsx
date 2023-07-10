@@ -6,8 +6,8 @@ import Exam from "@/components/Routine/Exam";
 import PlanController from "@/components/Routine/PlanController";
 import Shifts from "@/components/Routine/Shifts";
 import {AllContexts} from "@/contexts/ContextProvider";
-import getReqHandler from "@/utils/getReqHandler.";
-import putReqHandler from "@/utils/putReqHandler";
+import getReqHandler from "@/utils/ReqHandler/getReqHandler.";
+import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import {useContext, useState, useEffect} from "react";
 
 const Routine = () => {

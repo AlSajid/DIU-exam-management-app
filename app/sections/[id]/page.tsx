@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import Dropdown from "@/components/Dropdown";
 import {toast} from "react-hot-toast";
 import Board from "@/components/Board";
-import putReqHandler from "@/utils/putReqHandler";
+import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import {useRouter} from "next/navigation";
 
 export default function AddSection({params}: any) {
@@ -96,18 +96,30 @@ export default function AddSection({params}: any) {
                <tr>
                   <td>Course Name</td>
                   <td className="w-4/5">
-                     <Dropdown data={courses} setValue={setCourse} name="title" initValue={courseValue} />
+                     <Dropdown
+                        data={courses}
+                        setValue={setCourse}
+                        name="title"
+                        initValue={courseValue}
+                     />
                   </td>
                </tr>
                <tr>
                   <td>Course Teacher</td>
                   <td className="w-4/5">
-                     <Dropdown data={teachers} setValue={setTeacher} name="name" initValue={teacherValue} />
+                     <Dropdown
+                        data={teachers}
+                        setValue={setTeacher}
+                        name="name"
+                        initValue={teacherValue}
+                     />
                   </td>
                </tr>
             </Form>
 
-            <div className="text-center p-3">{loading ? <Loader msg="Updating" /> : <Button action={handleUpdate}>Update</Button>}</div>
+            <div className="text-center p-3">
+               {loading ? <Loader msg="Updating" /> : <Button action={handleUpdate}>Update</Button>}
+            </div>
          </div>
       </Board>
    );

@@ -2,7 +2,7 @@ export default function Input({input}: any) {
    return (
       <tr>
          <td>{input.label}</td>
-
+         
          <td className="w-4/5">
             {input.type === "select" ? (
                <select ref={input.ref}>

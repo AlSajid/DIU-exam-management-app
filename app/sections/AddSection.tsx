@@ -6,7 +6,7 @@ import Form from "@/components/Form/Form";
 import Button from "@/components/Button";
 import Dropdown from "@/components/Dropdown";
 import {toast} from "react-hot-toast";
-import postReqHandler from "@/utils/postReqHandler";
+import postReqHandler from "@/utils/ReqHandler/postReqHandler";
 
 export default function AddSection() {
    const {courses, teachers, getSections}: any = useContext(AllContexts);

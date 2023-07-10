@@ -11,6 +11,6 @@ export const options = [
    {name: "Sections", icon: <GoMortarBoard />},
    {name: "Classrooms", icon: <SiGoogleclassroom />},
    {name: "Routine", icon: <ImCalendar />},
-   {name: "Seat Plan", icon: <MdOutlineEventSeat />},
+   {name: "SeatPlans", icon: <MdOutlineEventSeat />},
    {name: "Invigilation", icon: <GiCctvCamera />}
 ];

@@ -8,7 +8,7 @@ export default function Home() {
 
    return (
       <main className="bg-slate-50 h-screen">
-         <Board heading="Welcome!">
+         <Board heading="DIU Exam Management App (CSE)">
             <div className="flex gap-10 m-10 flex-col items-center justify-center">
                <Clock
                   noSsr={true}

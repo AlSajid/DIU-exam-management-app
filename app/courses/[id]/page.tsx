@@ -9,7 +9,6 @@ import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import validateForm from "@/utils/validateForm";
 import {useRouter} from "next/navigation";
 import {useState, useRef, useContext, useEffect} from "react";
-import {toast} from "react-hot-toast";
 
 export default function Page({params}: any) {
    const {courses, getCourses}: any = useContext(AllContexts);
@@ -49,6 +48,7 @@ export default function Page({params}: any) {
          code: codeRef.current.value,
          title: titleRef.current.value,
          semester: semesterRef.current.value,
+         batch: batchRef.current.value,
          shift: shiftRef.current.value
       };
 
@@ -64,32 +64,39 @@ export default function Page({params}: any) {
 
    return (
       <Board heading="Update Course Information">
-         <div className="my-7">
-            <Form
-               input={[
-                  {
-                     label: "Course Code",
-                     ref: codeRef,
-                     type: "text",
-                     onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
-                  },
-                  {label: "Course Title", ref: titleRef, type: "text"},
-                  {label: "Semester", ref: semesterRef, type: "select", options: batch},
-                  {
-                     label: "Shift",
-                     ref: shiftRef,
-                     type: "select",
-                     options: [
-                        {name: "Morning", value: "Morning"},
-                        {name: "Evening", value: "Evening"}
-                     ]
-                  }
-               ]}
-            />
-            <div>
-               {loading ? <Loader msg="Updating" /> : <Button action={handleUpdate}>Update</Button>}
+         {courses && (
+            <div className="my-7">
+               <Form
+                  input={[
+                     {
+                        label: "Course Code",
+                        ref: codeRef,
+                        type: "text",
+                        onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
+                     },
+                     {label: "Course Title", ref: titleRef, type: "text"},
+                     {label: "Semester", ref: semesterRef, type: "select", options: batch},
+                     {label: "Batch", ref: batchRef, type: "number"},
+                     {
+                        label: "Shift",
+                        ref: shiftRef,
+                        type: "select",
+                        options: [
+                           {name: "Morning", value: "Morning"},
+                           {name: "Evening", value: "Evening"}
+                        ]
+                     }
+                  ]}
+               />
+               <div>
+                  {loading ? (
+                     <Loader msg="Updating" />
+                  ) : (
+                     <Button action={handleUpdate}>Update</Button>
+                  )}
+               </div>
             </div>
-         </div>
+         )}
       </Board>
    );
 }

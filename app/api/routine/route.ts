@@ -1,10 +1,11 @@
 import Routine from "@/db/models/routine";
 import getData from "@/db/utils/getData";
-import postData from "@/db/utils/postData";
 import putData from "@/db/utils/putData";
+import {NextResponse} from "next/server";
 
 export const GET = async () => {
-   return await getData(Routine, null);
+   const data = await getData(Routine, null);
+   return NextResponse.json(data);
 };
 
 export const PUT = async (request: Request) => {

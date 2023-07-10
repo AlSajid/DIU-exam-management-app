@@ -9,8 +9,10 @@ export default function errorHandler(error: {code: number | string}) {
 	switch (error.code) {
 		case 11000:
 			message = "Duplicate Entry";
+			break;
 		case 404:
 			message = "Not Found";
+			break;
 	}
 
 	return NextResponse.json({message}, {status: 500});

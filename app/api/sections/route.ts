@@ -25,5 +25,5 @@ export const DELETE = async (request: Request) => {
 	const {searchParams} = new URL(request.url);
 	const id = searchParams.get("id") || "";
 
-	return await deleteData(Section, id, "Section Deleted Successfully");
+	return await deleteData(Section, {_id: id}, "Section Deleted Successfully");
 };

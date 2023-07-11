@@ -34,8 +34,8 @@ export default function ViewCourses() {
             <Table
                name="Courses"
                data={courses}
-               heads={["Code", "Title", "Semester", "Batch", "Shift"]}
-               fields={["code", "title", "semester", "batch", "shift"]}
+               heads={["Code", "Title", "Semester", "Batch", "Shift", "Students"]}
+               fields={["code", "title", "semester", "batch", "shift", "students"]}
                actions={[
                   {
                      name: "Edit",

@@ -4,7 +4,8 @@ import deleteData from "@/db/utils/deleteData";
 import getData from "@/db/utils/getData";
 import postData from "@/db/utils/postData";
 import putData from "@/db/utils/putData";
-import { NextResponse } from "next/server";
+import {NextResponse} from "next/server";
+import getCourses from "./getCourses";
 
 let courses: any = null;
 
@@ -15,7 +16,7 @@ export const POST = async (request: Request) => {
 };
 
 export const GET = async () => {
-   if (courses === null) courses = await getData(Course, null);
+   if (courses === null) courses = await getCourses();
    return NextResponse.json(courses);
 };
 

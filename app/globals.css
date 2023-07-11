@@ -45,7 +45,7 @@ table {
 }
 
 tr {
-	@apply p-3 border;
+	@apply p-3 border ;
 }
 td {
 	@apply py-1 px-3;

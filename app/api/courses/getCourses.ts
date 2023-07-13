@@ -30,8 +30,6 @@ export default async function getCourses() {
          }
       ]);
 
-      console.log("kaj hocche");
-
       return courses;
    } catch (error: any) {
       return errorHandler(error);

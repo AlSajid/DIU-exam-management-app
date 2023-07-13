@@ -5,9 +5,9 @@ export default function Tab({header, content}: any) {
 	const [tabIndex, setTabIndex] = useState(0);
 
 	return (
-		<div className="container mx-auto my-3">
+		<div className="mx-auto my-3">
 			{/* tab headers */}
-			<div className=" text-lg text-bold text-center rounded-full w-1/2 mx-auto">
+			<div className=" text-lg text-bold text-center rounded-full w-1/2 mx-auto my-3">
 				<div className="flex rounded border border-emerald-700">
 					{header?.map((item: string, index: number) => {
 						if (tabIndex === index)

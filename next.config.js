@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	experimental: {
-		serverComponentsExternalPackages: ["mongoose"]
-	}
+   reactStrictMode: false,
+   experimental: {
+      serverComponentsExternalPackages: ["mongoose"]
+   }
 };
 
 module.exports = nextConfig;

@@ -29,7 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                </div>
             </ContextProvider>
 
-            <div className="md:invisible visible flex items-center text-center text-white justify-center font-serif text-3xl flex-col bg-red-400 h-full w-full fixed top-0 right-0 bottom-0 left-0">
+            <div className="md:invisible visible flex items-center text-center text-slate-100 justify-center font-serif text-3xl flex-col bg-black h-full w-full fixed top-0 right-0 bottom-0 left-0">
                <h1 className="text-9xl">Sorry!</h1> <br />
                <h2>this site is only accessible from Tablet/PC</h2>
             </div>

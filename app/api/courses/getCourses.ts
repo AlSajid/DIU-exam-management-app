@@ -10,20 +10,8 @@ export default async function getCourses() {
          {
             $lookup: {
                from: "sections",
-               let: {courseId: "$_id"},
-               pipeline: [
-                  {
-                     $match: {
-                        $expr: {$eq: ["$$courseId", "$course"]}
-                     }
-                  },
-                  {
-                     $group: {
-                        _id: "$course",
-                        students: {$sum: "$students"}
-                     }
-                  }
-               ],
+               localField: "_id",
+               foreignField: "course",
                as: "sections"
             }
          },
@@ -40,8 +28,17 @@ export default async function getCourses() {
          },
          {
             $group: {
-               _id: {shift: "$shift", semester: "$semester"},
+               _id: {
+                  shift: "$shift",
+                  semester: "$semester"
+               },
                courses: {$push: "$$ROOT"}
+            }
+         },
+         {
+            $sort: {
+               "_id.shift": -1,
+               "_id.semester": 1
             }
          },
          {

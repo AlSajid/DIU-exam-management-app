@@ -1,15 +1,16 @@
 import mongoose from "mongoose";
 
 const teacherSchema = new mongoose.Schema(
-	{
-		employeeID: {type: Number, required: false},
-		name: {type: String, required: true},
-		designation: {type: String, required: true},
-		department: {type: String, required: true},
-		email: {type: String, unique: true, required: true},
-		phone: {type: String, unique: true, required: true}
-	},
-	{versionKey: false}
+   {
+      employeeID: {type: Number, required: false},
+      name: {type: String, required: true},
+      designation: {type: String, required: true},
+      profile: {type: String, required: true},
+      department: {type: String, required: true},
+      email: {type: String, required: true},
+      phone: {type: String, required: true}
+   },
+   {versionKey: false, timestamps: true}
 );
 
 const Teacher = mongoose.model("teacher", teacherSchema);

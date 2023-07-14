@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
 
 export default function useTeachers() {
-	const [teachers, setTeachers] = useState();
+   const [teachers, setTeachers] = useState();
 
-	const getTeachers = () => {
-		fetch(`/api/teachers`)
-			.then((response) => response.json())
-			.then((data) => setTeachers(data));
-	};
+   useEffect(() => {
+      getTeachers();
+   }, []);
 
-	useEffect(() => {
-		getTeachers();
-	}, []);
+   const getTeachers = () => {
+      fetch(`/api/teachers`)
+         .then((response) => response.json())
+         .then((data) => setTeachers(data));
+   };
 
-	return {teachers, getTeachers};
+   return {teachers, getTeachers};
 }

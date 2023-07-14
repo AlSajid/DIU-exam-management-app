@@ -6,4 +6,5 @@ export interface Teacher {
    phone: string;
    email: string;
    profile: string;
+   initial: string;
 }

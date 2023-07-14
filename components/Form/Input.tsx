@@ -1,7 +1,7 @@
 export default function Input({input}: any) {
    return (
       <tr>
-         <td className="bg-slate-100">{input.label}</td>
+         <td className="bg-slate-50">{input.label}</td>
 
          <td className="w-4/5 border">
             {input.type === "select" ? (

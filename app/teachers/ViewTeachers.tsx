@@ -35,7 +35,12 @@ const ViewTeachers = () => {
    const handleSearch = (query: string) => {
       const result = teachers.filter((teacher: Teacher) => {
          const name = teacher.name.toLowerCase();
-         return name.includes(query.toLowerCase()) || teacher.employeeID == query;
+         return (
+            teacher.initial.toLowerCase().includes(query.toLowerCase()) ||
+            name.includes(query.toLowerCase()) ||
+            teacher.employeeID == query ||
+            teacher.initial.toLowerCase().includes(query.toLowerCase())
+         );
       });
       setList(result);
    };
@@ -49,7 +54,8 @@ const ViewTeachers = () => {
                <thead>
                   <tr>
                      <td className="w-1/12">Employee ID</td>
-                     <td className="w-3/12">Name</td>
+                     <td className="w-1/12">Initial</td>
+                     <td className="w-2/12">Name</td>
                      <td className="w-2/12">Designation</td>
                      <td className="w-2/12">Phone</td>
                      <td className="w-2/12">Email</td>
@@ -65,7 +71,7 @@ const ViewTeachers = () => {
                   {list.map((teacher: any, index: number) => (
                      <tr key={teacher._id} className="even:bg-slate-100">
                         <td key={index}>{teacher.employeeID}</td>
-
+                        <td className="text-center">{teacher.initial}</td>
                         <td>
                            <a href={teacher.profile}>{teacher.name}</a>
                         </td>

@@ -1,6 +1,6 @@
 export default function Table({data, heads, fields, actions}: any) {
 	return (
-		<div className="h-[700px] overflow-y-scroll py-3">
+		<div className="py-3">
 			{data.length === 0 ? (
 				<h1 className="text-center text-slate-500 text-xl my-5">No data found</h1>
 			) : (

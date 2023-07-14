@@ -35,11 +35,11 @@ const ViewTeachers = () => {
    const handleSearch = (query: string) => {
       const result = teachers.filter((teacher: Teacher) => {
          const name = teacher.name.toLowerCase();
+         const initial = teacher?.initial?.toLowerCase() || "";
+
          return (
-            teacher.initial.toLowerCase().includes(query.toLowerCase()) ||
-            name.includes(query.toLowerCase()) ||
-            teacher.employeeID == query ||
-            teacher.initial.toLowerCase().includes(query.toLowerCase())
+            initial.includes(query.toLowerCase()) ||
+            name.includes(query.toLowerCase()) || teacher.employeeID == query
          );
       });
       setList(result);

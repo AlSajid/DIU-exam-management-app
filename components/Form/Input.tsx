@@ -1,9 +1,9 @@
 export default function Input({input}: any) {
    return (
       <tr>
-         <td>{input.label}</td>
-         
-         <td className="w-4/5">
+         <td className="bg-slate-100">{input.label}</td>
+
+         <td className="w-4/5 border">
             {input.type === "select" ? (
                <select ref={input.ref}>
                   <option value="">...</option>

@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import Form from "@/components/Form/Form";
 import Loader from "@/components/Loader";
 import {useRef, useState, useContext} from "react";
-import {batch} from "@/public/batch";
+import {semesters} from "@/public/config";
 import postReqHandler from "@/utils/ReqHandler/postReqHandler";
 import {AllContexts} from "@/contexts/ContextProvider";
 import validateForm from "@/utils/validateForm";
@@ -58,7 +58,7 @@ export default function AddCourses() {
                   onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
                },
                {label: "Course Title", ref: titleRef, type: "text"},
-               {label: "Semester", ref: semesterRef, type: "select", options: batch},
+               {label: "Semester", ref: semesterRef, type: "select", options: semesters},
                {label: "Batch", ref: batchRef, type: "number"},
                {
                   label: "Shift",

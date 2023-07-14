@@ -53,7 +53,7 @@ thead {
 }
 
 td {
-   @apply py-1 px-3;
+   @apply py-1 px-3 border;
 }
 
 thead tr {

@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import Form from "@/components/Form/Form";
 import Loader from "@/components/Loader";
 import {AllContexts} from "@/contexts/ContextProvider";
-import {batch} from "@/public/batch";
+import {semesters} from "@/public/config";
 import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import validateForm from "@/utils/validateForm";
 import {useRouter} from "next/navigation";
@@ -75,7 +75,7 @@ export default function Page({params}: any) {
                         onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
                      },
                      {label: "Course Title", ref: titleRef, type: "text"},
-                     {label: "Semester", ref: semesterRef, type: "select", options: batch},
+                     {label: "Semester", ref: semesterRef, type: "select", options: semesters},
                      {label: "Batch", ref: batchRef, type: "number"},
                      {
                         label: "Shift",

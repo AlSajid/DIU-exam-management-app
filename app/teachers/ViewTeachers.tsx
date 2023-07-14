@@ -63,7 +63,7 @@ const ViewTeachers = () => {
                </thead>
                <tbody>
                   {list.map((teacher: any, index: number) => (
-                     <tr key={teacher._id} className=" even:bg-slate-100">
+                     <tr key={teacher._id} className="even:bg-slate-100">
                         <td key={index}>{teacher.employeeID}</td>
 
                         <td>

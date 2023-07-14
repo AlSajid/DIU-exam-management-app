@@ -10,8 +10,20 @@ export default async function getCourses() {
          {
             $lookup: {
                from: "sections",
-               localField: "_id",
-               foreignField: "course",
+               let: {courseId: "$_id"},
+               pipeline: [
+                  {
+                     $match: {
+                        $expr: {$eq: ["$$courseId", "$course"]}
+                     }
+                  },
+                  {
+                     $group: {
+                        _id: "$course",
+                        students: {$sum: "$students"}
+                     }
+                  }
+               ],
                as: "sections"
             }
          },
@@ -23,15 +35,32 @@ export default async function getCourses() {
                semester: 1,
                batch: 1,
                shift: 1,
-               students: {
-                  $sum: "$sections.students"
-               }
+               students: {$sum: "$sections.students"}
+            }
+         },
+         {
+            $group: {
+               _id: {shift: "$shift", semester: "$semester"},
+               courses: {$push: "$$ROOT"}
+            }
+         },
+         {
+            $group: {
+               _id: "$_id.shift",
+               semesters: {$push: "$courses"}
+            }
+         },
+         {
+            $project: {
+               _id: 0,
+               shiftName: "$_id",
+               semesters: 1
             }
          }
       ]);
 
       return courses;
-   } catch (error: any) {
-      return errorHandler(error);
+   } catch (error) {
+      // return errorHandler(error);
    }
 }

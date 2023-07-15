@@ -3,17 +3,16 @@ import Board from "@/components/Board";
 import Button from "@/components/Button";
 import Form from "@/components/Form/Form";
 import Loader from "@/components/Loader";
-import {AllContexts} from "@/contexts/ContextProvider";
 import {semesters} from "@/public/config";
+import {Course} from "@/types/course";
 import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import validateForm from "@/utils/validateForm";
 import {useRouter} from "next/navigation";
-import {useState, useRef, useContext, useEffect} from "react";
+import {useState, useRef, useEffect} from "react";
+import {toast} from "react-hot-toast";
 
 export default function Page({params}: any) {
-   const {courses, getCourses}: any = useContext(AllContexts);
    const router = useRouter();
-
    const [loading, setLoading] = useState(false);
 
    const codeRef: any = useRef();
@@ -23,15 +22,20 @@ export default function Page({params}: any) {
    const shiftRef: any = useRef();
 
    useEffect(() => {
-      if (!courses) return;
-      const info = courses.find((item: any) => item._id === params.id);
-
-      codeRef.current.value = info.code;
-      titleRef.current.value = info.title;
-      semesterRef.current.value = info.semester;
-      batchRef.current.value = info.batch;
-      shiftRef.current.value = info.shift;
-   }, [courses, params.id]);
+      fetch(`/api/courses/${params.id}`)
+         .then((res) => res.json())
+         .then((data) => {
+            codeRef.current.value = data.code;
+            titleRef.current.value = data.title;
+            semesterRef.current.value = data.semester;
+            batchRef.current.value = data.batch;
+            shiftRef.current.value = data.shift;
+         })
+         .catch((err) => {
+            toast.error("Something went wrong!");
+            console.log(err);
+         });
+   }, [params.id]);
 
    const handleUpdate = async () => {
       const refs = [
@@ -56,47 +60,38 @@ export default function Page({params}: any) {
       const response = await putReqHandler(`/api/courses?id=${params.id}`, data);
       setLoading(false);
 
-      if (response === 200) {
-         getCourses();
-         router.push(`/courses`);
-      }
+      if (response === 200) router.push(`/courses`);
    };
 
    return (
       <Board heading="Update Course Information">
-         {courses && (
-            <div className="my-7">
-               <Form
-                  input={[
-                     {
-                        label: "Course Code",
-                        ref: codeRef,
-                        type: "text",
-                        onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
-                     },
-                     {label: "Course Title", ref: titleRef, type: "text"},
-                     {label: "Semester", ref: semesterRef, type: "select", options: semesters},
-                     {label: "Batch", ref: batchRef, type: "number"},
-                     {
-                        label: "Shift",
-                        ref: shiftRef,
-                        type: "select",
-                        options: [
-                           {name: "Morning", value: "Morning"},
-                           {name: "Evening", value: "Evening"}
-                        ]
-                     }
-                  ]}
-               />
-               <div>
-                  {loading ? (
-                     <Loader msg="Updating" />
-                  ) : (
-                     <Button action={handleUpdate}>Update</Button>
-                  )}
-               </div>
+         <div className="my-7">
+            <Form
+               input={[
+                  {
+                     label: "Course Code",
+                     ref: codeRef,
+                     type: "text",
+                     onChange: (e: any) => (e.target.value = e.target.value.toUpperCase())
+                  },
+                  {label: "Course Title", ref: titleRef, type: "text"},
+                  {label: "Semester", ref: semesterRef, type: "select", options: semesters},
+                  {label: "Batch", ref: batchRef, type: "number"},
+                  {
+                     label: "Shift",
+                     ref: shiftRef,
+                     type: "select",
+                     options: [
+                        {name: "Morning", value: "Morning"},
+                        {name: "Evening", value: "Evening"}
+                     ]
+                  }
+               ]}
+            />
+            <div>
+               {loading ? <Loader msg="Updating" /> : <Button action={handleUpdate}>Update</Button>}
             </div>
-         )}
+         </div>
       </Board>
    );
 }

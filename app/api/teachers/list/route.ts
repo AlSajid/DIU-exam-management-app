@@ -34,8 +34,6 @@ export const GET = async (request: Request) => {
    let dataLength = -1;
 
    while (dataLength !== 0) {
-      console.log("start" + dataLength);
-
       let url = `https://faculty.daffodilvarsity.edu.bd/teachers/cse/${serial}`;
       const dom = await getDom(url);
 
@@ -50,8 +48,6 @@ export const GET = async (request: Request) => {
             serial++;
          }
       }
-
-      console.log("end" + dataLength);
    }
 
    return NextResponse.json(teachersProfile);

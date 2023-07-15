@@ -37,7 +37,7 @@ export default async function getCourses() {
          },
          {
             $sort: {
-               "_id.shift": -1,
+               // "_id.shift": 1,
                "_id.semester": 1
             }
          },

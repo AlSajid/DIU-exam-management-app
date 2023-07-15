@@ -1,17 +1,19 @@
 "use client";
+import getCourses from "@/app/api/courses/getCourses";
 import Board from "@/components/Board";
 import Button from "@/components/Button";
 import Form from "@/components/Form/Form";
 import Loader from "@/components/Loader";
+import {AllContexts} from "@/contexts/ContextProvider";
 import {semesters} from "@/public/config";
-import {Course} from "@/types/course";
 import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import validateForm from "@/utils/validateForm";
 import {useRouter} from "next/navigation";
-import {useState, useRef, useEffect} from "react";
+import {useState, useRef, useEffect, useContext} from "react";
 import {toast} from "react-hot-toast";
 
 export default function Page({params}: any) {
+   const {getCourses}: any = useContext(AllContexts);
    const router = useRouter();
    const [loading, setLoading] = useState(false);
 
@@ -60,7 +62,10 @@ export default function Page({params}: any) {
       const response = await putReqHandler(`/api/courses?id=${params.id}`, data);
       setLoading(false);
 
-      if (response === 200) router.push(`/courses`);
+      if (response === 200) {
+         getCourses();
+         router.push(`/courses`);
+      }
    };
 
    return (

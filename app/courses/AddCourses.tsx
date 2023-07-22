@@ -59,7 +59,7 @@ export default function AddCourses() {
                },
                {label: "Course Title", ref: titleRef, type: "text"},
                {label: "Semester", ref: semesterRef, type: "select", options: semesters},
-               {label: "Batch", ref: batchRef, type: "number"},
+               {label: "Batch", ref: batchRef, type: "text"},
                {
                   label: "Shift",
                   ref: shiftRef,

@@ -4,7 +4,7 @@ export interface Course {
    title: string;
    code: string;
    semesters: typeof semesters;
-   batch: number;
+   batch: string;
    shift: string;
    
 }

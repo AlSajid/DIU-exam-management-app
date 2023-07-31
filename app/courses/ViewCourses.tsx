@@ -1,4 +1,5 @@
 "use client";
+
 import Loader from "@/components/Loader";
 import {AllContexts} from "@/contexts/ContextProvider";
 import deletionModal from "@/components/DeletionModal";
@@ -6,6 +7,7 @@ import delReqHandler from "@/utils/ReqHandler/delReqHandler";
 import {useContext, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {shifts} from "@/public/config";
+import Link from "next/link";
 
 export default function ViewCourses() {
    const {courses, getCourses}: any = useContext(AllContexts);
@@ -23,7 +25,7 @@ export default function ViewCourses() {
    };
 
    const handleEdit = (id: string) => {
-      router.push(`/courses/${id}`);
+      router.push(`/courses/edit/${id}`);
    };
 
    return (
@@ -64,16 +66,22 @@ export default function ViewCourses() {
                               )}
                               <td className="text-center">{course.batch}</td>
                               <td className="text-center">{course.code}</td>
-                              <td>{course.title}</td>
+
+                              <td>
+                                 <Link href={`/courses/sections/${course._id}`}>
+                                    {course.title}
+                                 </Link>
+                              </td>
+
                               <td className="text-center">{course.students}</td>
                               <td>
                                  <button
-                                    className="bg-transparent px-1 font-bold text-black hover:text-red-700"
+                                    className="actionButton"
                                     onClick={() => handleEdit(course._id)}>
                                     Edit
                                  </button>
                                  <button
-                                    className="bg-transparent px-1 font-bold text-black hover:text-red-700"
+                                    className="actionButton"
                                     onClick={() => handleDelete(course._id)}>
                                     Delete
                                  </button>

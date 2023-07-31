@@ -6,21 +6,24 @@ import Exam from "@/components/Routine/Exam";
 import PlanController from "@/components/Routine/PlanController";
 import Shifts from "@/components/Routine/Shifts";
 import {AllContexts} from "@/contexts/ContextProvider";
+import {Course} from "@/types/course";
 import getReqHandler from "@/utils/ReqHandler/getReqHandler.";
 import putReqHandler from "@/utils/ReqHandler/putReqHandler";
 import {useContext, useState, useEffect} from "react";
 
 const Routine = () => {
-   const {courses}: any = useContext(AllContexts);
-
    const [loading, setLoading] = useState<boolean>(true);
    const [shifts, setShifts] = useState([]);
    const [days, setDays] = useState([]);
    const [routine, setRoutine] = useState<any>({});
    const [hasChanged, setHasChanged] = useState<boolean>(false);
+   const [courses, setCourses] = useState<Course[]>([]);
 
    useEffect(() => {
       const fetchRoutine = async () => {
+         const courseList = await getReqHandler("/api/courses/all");
+         setCourses(courseList);
+
          const data = await getReqHandler("/api/routine");
          setShifts(data[0].shifts);
          setDays(data[0].days);

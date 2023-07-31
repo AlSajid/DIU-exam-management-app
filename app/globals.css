@@ -59,3 +59,7 @@ td {
 thead tr {
    @apply bg-emerald-700 text-white text-center z-50;
 }
+
+.actionButton {
+   @apply bg-transparent px-1 font-bold text-black hover:text-red-700;
+}

@@ -34,7 +34,7 @@ export default function ViewClassrooms() {
             <Table
                name="Sections"
                data={classrooms}
-               heads={["Room No", "Row No", "Number of Seats"]}
+               heads={["Room", "Column", "Seats"]}
                fields={["room", "row", "seats"]}
                actions={[
                   {

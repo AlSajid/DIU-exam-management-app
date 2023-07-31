@@ -2,11 +2,11 @@ import connect from "@/db/connect";
 import Course from "@/db/models/courses";
 import errorHandler from "@/utils/errorHandler";
 
-export default async function getCourses() {
+export default async function GET() {
    try {
       await connect();
 
-      const courses = await Course.aggregate([
+      const courses = Course.aggregate([
          {
             $lookup: {
                from: "sections",

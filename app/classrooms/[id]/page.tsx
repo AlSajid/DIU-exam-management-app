@@ -74,7 +74,7 @@ export default function Page({params}: any) {
                      ref: roomRef
                   },
                   {
-                     label: "Row No",
+                     label: "Column No",
                      type: "select",
                      options: alphabets,
                      ref: rowRef

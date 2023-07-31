@@ -31,7 +31,6 @@ export default function Shifts({
 
       setHasChanged(true);
       setShifts(updatedShifts);
-      console.log(updatedShifts);
    };
 
    return (

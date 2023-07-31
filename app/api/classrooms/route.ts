@@ -4,6 +4,7 @@ import deleteData from "@/db/utils/deleteData";
 import getData from "@/db/utils/getData";
 import postData from "@/db/utils/postData";
 import putData from "@/db/utils/putData";
+import connect from "@/db/connect";
 
 let classrooms: any = null;
 
@@ -14,8 +15,16 @@ export const POST = async (request: Request) => {
 };
 
 export const GET = async () => {
-   if (classrooms === null) classrooms = await getData(Classroom, null);
-   return NextResponse.json(classrooms);
+   try {
+      if (classrooms === null) {
+         await connect();
+         classrooms = await Classroom.aggregate([{$sort: {room: 1, row: 1}}]);
+      }
+      return NextResponse.json(classrooms);
+   } catch (error) {
+      console.error("Error occurred:", error);
+      return NextResponse.json({error: "Something went wrong"}, {status: 500});
+   }
 };
 
 export const PUT = async (request: Request) => {

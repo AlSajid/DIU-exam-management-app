@@ -1,5 +1,5 @@
 "use client";
-import getCourses from "@/app/api/courses/getCourses";
+
 import Board from "@/components/Board";
 import Button from "@/components/Button";
 import Form from "@/components/Form/Form";

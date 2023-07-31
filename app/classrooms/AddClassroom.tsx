@@ -63,7 +63,7 @@ export default function AddClassroom() {
                   ref: roomRef
                },
                {
-                  label: "Row No",
+                  label: "Column No",
                   type: "select",
                   options: alphabets,
                   ref: rowRef

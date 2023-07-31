@@ -1,16 +1,22 @@
 import connect from "@/db/connect";
 import Section from "@/db/models/sections";
 import errorHandler from "@/utils/errorHandler";
+import {ObjectId} from "mongodb";
 import {NextResponse} from "next/server";
 
-export default async function getSections() {
+export default async function getSections(id: string) {
    try {
       await connect();
-      const courses = await Section.aggregate([
+      const sections = await Section.aggregate([
+         {
+            $match: {
+               courseId: new ObjectId(id)
+            }
+         },
          {
             $lookup: {
                from: "courses",
-               localField: "course",
+               localField: "courseId",
                foreignField: "_id",
                as: "course"
             }
@@ -21,7 +27,7 @@ export default async function getSections() {
          {
             $lookup: {
                from: "teachers",
-               localField: "teacher",
+               localField: "teacherId",
                foreignField: "_id",
                as: "teacher"
             }
@@ -36,7 +42,6 @@ export default async function getSections() {
                courseSemester: "$course.semester",
                courseShift: "$course.shift",
                teacherId: "$teacher._id",
-               CourseId: "$course._id",
                teacherName: "$teacher.name"
             }
          },
@@ -45,10 +50,15 @@ export default async function getSections() {
                course: 0,
                teacher: 0
             }
+         },
+         {
+            $sort: {
+               section: 1
+            }
          }
       ]);
 
-      return NextResponse.json(courses);
+      return NextResponse.json(sections);
    } catch (error: any) {
       return errorHandler(error);
    }

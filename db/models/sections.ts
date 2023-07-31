@@ -1,14 +1,14 @@
-import mongoose, {Schema} from "mongoose";
+import {Schema, model} from "mongoose";
 
-const sectionSchema = new mongoose.Schema(
-	{
-		course: {type: Schema.Types.ObjectId},
-		teacher: {type: Schema.Types.ObjectId},
-		section: {type: String},
-		students: {type: Number}
-	},
-	{versionKey: false}
+const sectionSchema = new Schema(
+   {
+      courseId: {type: Schema.Types.ObjectId},
+      teacherId: {type: Schema.Types.ObjectId},
+      section: {type: String, unique: true},
+      students: {type: Number}
+   },
+   {versionKey: false}
 );
 
-const Section = mongoose.model("Section", sectionSchema);
+const Section = model("Section", sectionSchema);
 export default Section;

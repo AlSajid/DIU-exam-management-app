@@ -2,7 +2,7 @@ import connect from "@/db/connect";
 import Course from "@/db/models/courses";
 import errorHandler from "@/utils/errorHandler";
 
-export default async function GET() {
+export const GET = async (request: Request) => {
    try {
       await connect();
 

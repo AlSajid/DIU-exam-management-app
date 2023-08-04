@@ -9,9 +9,9 @@ export const POST = async (request: Request) => {
    return await postData(Section, body, "Section Added Successfully");
 };
 
-export const GET = async () => {
-   return await getSections();
-};
+// export const GET = async () => {
+//    return getSections();
+// };
 
 export const PUT = async (request: Request) => {
    const {searchParams} = new URL(request.url);

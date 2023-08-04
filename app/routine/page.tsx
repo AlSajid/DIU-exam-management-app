@@ -3,6 +3,7 @@ import Board from "@/components/Board";
 import Loader from "@/components/Loader";
 import Days from "@/components/Routine/Days";
 import Exam from "@/components/Routine/Exam";
+import PDF from "@/components/Routine/PDF";
 import PlanController from "@/components/Routine/PlanController";
 import Shifts from "@/components/Routine/Shifts";
 import {AllContexts} from "@/contexts/ContextProvider";
@@ -51,6 +52,8 @@ const Routine = () => {
             <button disabled={!hasChanged} onClick={handleSave}>
                Save
             </button>
+
+            {!hasChanged && <PDF shifts={shifts} days={days} exams={routine} />}
          </div>
          {loading ? (
             <Loader msg="fetching routine table" />
